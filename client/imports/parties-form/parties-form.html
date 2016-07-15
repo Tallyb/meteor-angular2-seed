@@ -1,0 +1,13 @@
+<form [ngFormModel]="partiesForm" #f="ngForm" (submit)="addParty(f.value)">
+  <fieldset class="form-group">
+    <md-input ngControl="name" placeholder="Party name"></md-input>
+    <md-input ngControl="description" placeholder="Description"></md-input>
+    <md-input ngControl="location" placeholder="Location name"></md-input>
+
+    <div class="checkbox">
+        <md-checkbox [(checked)]="public">Public</md-checkbox>
+    </div>
+
+    <button md-raised-button type="submit" class="md-primary">Add Party!</button>
+  </fieldset>
+</form>
