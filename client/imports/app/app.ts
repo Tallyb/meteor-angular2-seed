@@ -15,16 +15,7 @@ const template =  `
     <a href="/parties"><span class="md-title">App</span></a>
   </h2>
   <span flex></span>
-  <div layout="row">
-    <div [hidden]="user">
-      <button md-button [routerLink]="['/Login']" >Login</button>
-      <button md-button [routerLink]="['/Signup']">Sign up</button>
-    </div>
-    <div [hidden]="!user">
-      <span>{{ user | displayName }}</span>
-      <button md-button (click)="logout()">Logout</button>
-    </div>
-  </div>
+    <user-menu></user-menu>
 </md-toolbar>
 <router-outlet flex-gt-sm layout-gt-sm="row"></router-outlet>
 `;
@@ -33,7 +24,7 @@ const template =  `
 @Component({
   selector: 'app',
   template,
-    directives: [MD_TOOLBAR_DIRECTIVES],
+    directives: [ROUTER_DIRECTIVES, MD_TOOLBAR_DIRECTIVES, UserMenu],
 })
 
 export class App extends MeteorComponent {

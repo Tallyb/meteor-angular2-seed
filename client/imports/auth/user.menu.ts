@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginButtons} from 'angular2-meteor-accounts-ui';
-import { RouterLink, ROUTER_DIRECTIVES } from '@angular/router';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { Meteor } from 'meteor/meteor';
 import {MeteorComponent} from 'angular2-meteor';
-
 import {UserDisplayName} from './display.name.pipe';
 
 
@@ -13,8 +12,8 @@ import {UserDisplayName} from './display.name.pipe';
     template: `
           <div layout="row">
             <div [hidden]="user">
-              <button md-button [routerLink]="['/Login']" >Login</button>
-              <button md-button [routerLink]="['/Signup']">Sign up</button>
+              <button md-button [routerLink]="['/login']" >Login</button>
+              <button md-button [routerLink]="['/signup']">Sign up</button>
             </div>
             <div [hidden]="!user">
               <span>{{ user | userDisplayName }}</span>
@@ -22,7 +21,7 @@ import {UserDisplayName} from './display.name.pipe';
             </div>
           </div>
 `,
-    directives: [ROUTER_DIRECTIVES, LoginButtons, RouterLink],
+    directives: [ROUTER_DIRECTIVES, LoginButtons],
     pipes: [UserDisplayName]
 })
 

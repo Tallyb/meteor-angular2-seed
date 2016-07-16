@@ -5,8 +5,8 @@ import {Recover} from './recover';
 
 
 export const routes: RouterConfig = [
-    { path: '/login', component: Login },
-    { path: '/signup',  component: Signup },
-    { path: '/recover', component: Recover }
+    { path: 'login', component: Login },
+    { path: 'signup',  component: Signup },
+    { path: 'recover', component: Recover }
 ];
 
