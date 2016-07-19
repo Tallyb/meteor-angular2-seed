@@ -6,7 +6,6 @@ import { ROUTER_DIRECTIVES }  from '@angular/router';
 import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { MeteorComponent } from 'angular2-meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { Counts } from 'meteor/tmeasday:publish-counts';
 import { PaginationService, PaginatePipe, PaginationControlsCmp } from 'angular2-pagination';
 import { RsvpPipe } from '../parties-form/rsvp.ts';
 import { Meteor } from 'meteor/meteor';
@@ -45,7 +44,7 @@ export class PartiesList extends MeteorComponent{
     });
 
     this.autorun(() => {
-      this.partiesSize = Counts.get('numberOfParties');
+      this.partiesSize = 10;
     }, true);
   }
 

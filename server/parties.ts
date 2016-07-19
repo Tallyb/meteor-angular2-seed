@@ -1,6 +1,6 @@
 import {Parties} from '../collections/parties';
 import {Meteor} from 'meteor/meteor';
-import {Counts} from 'meteor/tmeasday:publish-counts';
+
 
 function buildQuery(partyId: string, location: string): Object {
   var isAvailable = {
@@ -31,8 +31,8 @@ function buildQuery(partyId: string, location: string): Object {
 }
 
 Meteor.publish('parties', function(options: Object, location: string) {
-  Counts.publish(this, 'numberOfParties',
-    Parties.find(buildQuery.call(this, null, location)), { noReady: true });
+  // Counts.publish(this, 'numberOfParties',
+  //   Parties.find(buildQuery.call(this, null, location)), { noReady: true });
   return Parties.find(buildQuery.call(this, null, location), options);
 });
 

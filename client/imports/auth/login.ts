@@ -1,81 +1,67 @@
 import { Component } from '@angular/core';
-import { MeteorComponent } from 'angular2-meteor';
-import { FormBuilder, ControlGroup, Validators } from '@angular/common';
+import { NgForm }   from '@angular/forms';
 import { Router , ROUTER_DIRECTIVES} from '@angular/router';
-import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
-import { MdToolbar } from '@angular2-material/toolbar';
 import { Meteor } from 'meteor/meteor';
+import { MeteorComponent } from 'angular2-meteor';
+import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
+import { MD_TOOLBAR_DIRECTIVES } from '@angular2-material/toolbar';
 
 const template = `
 <md-content layout="row" layout-align="center start" layout-fill layout-margin>
-    <md-whiteframe layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2" layout-fill>
+    <div layout="column" flex flex-md="50" flex-lg="50" flex-gt-lg="33" class="md-whiteframe-z2">
         <md-toolbar class="md-primary" color="primary">
             Sign in
         </md-toolbar>
-        <div layout="column" layout-fill layout-margin layout-padding>
-            <div layout="row" layout-fill layout-margin>
-                <p class="md-body-2"> Sign in with your email</p>
-            </div>
-
-            <form [ngFormModel]="loginForm" #f="ngForm" (submit)="login(f.value)" layout="column" layout-fill
-                  layout-padding layout-margin>
-                <md-input ngControl="email" placeholder="Email" aria-label="email"></md-input>
-                <md-input type="password" placeholder="Password" ngControl="password" aria-label="password"></md-input>
-
-                <div layout="row" layout-align="space-between center">
-                    <button md-button [routerLink]="['/Recover']">Forgot password?</button>
-                    <button md-raised-button class="md-primary" type="submit" aria-label="login">Sign In
-                    </button>
-                </div>
-            </form>
-            <div [hidden]="error == ''">
-                <md-toolbar class="md-warn" layout="row" layout-fill layout-padding layout-margin>
-                    <p class="md-body-1">{{ error }}</p>
-                </md-toolbar>
-            </div>
-            <md-divider></md-divider>
-            <div layout="row" layout-align="center">
-                <button md-button [routerLink]="['/Signup']">Need an account?</button>
-            </div>
+        <div layout="row" layout-margin>
+            <p class="md-body-2"> Sign in with your email</p>
         </div>
-    </md-whiteframe>
+
+        <form #f="ngForm" (submit)="onSubmit(f.value)" layout="column" layout-padding layout-margin>
+            <md-input ngModel type="text" name="email" placeholder="Email" aria-label="email" required></md-input>
+            <md-input ngModel type="password" name="password" placeholder="Password" aria-label="password" required></md-input>
+
+            <div layout="row" layout-align="space-between center">
+                <button md-button [routerLink]="['/Recover']">Forgot password?</button>
+                <button md-raised-button class="md-primary" type="submit" aria-label="login" [disabled]="!f.valid">Sign In
+                </button>
+            </div>
+        </form>
+        <div [hidden]="!error">
+            <md-toolbar class="md-warn" layout="row" layout-fill layout-padding layout-margin>
+                <p class="md-body-1">{{ error }}</p>
+            </md-toolbar>
+        </div>
+        <md-divider></md-divider>
+        <div layout="row" layout-align="center">
+            <button md-button [routerLink]="['/signup']">Need an account?</button>
+        </div>
+    </div>
 </md-content>
-
-
 `;
 
 @Component({
   selector: 'login',
-  directives: [ ROUTER_DIRECTIVES, MD_INPUT_DIRECTIVES, MdToolbar],
+  directives: [ ROUTER_DIRECTIVES, MD_INPUT_DIRECTIVES, MD_TOOLBAR_DIRECTIVES],
   template ,
 })
 export class Login extends MeteorComponent {
-  loginForm: ControlGroup;
   error: string;
+
 
   constructor(private router: Router) {
     super();
-
-    let fb = new FormBuilder();
-
-    this.loginForm = fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-
-    this.error = '';
   }
 
-  login(credentials) {
-    if (this.loginForm.valid) {
+  onSubmit (credentials) {
       Meteor.loginWithPassword(credentials.email, credentials.password, (err) => {
-        if (err) {
-          this.error = err;
-        }
-        else {
-          this.router.navigate(['/PartiesList']);
-        }
+
+          if (err) {
+              this.error = err;
+          }
+          else {
+              this.router.navigate(['/']);
+          }
       });
-    }
+
   }
 }
