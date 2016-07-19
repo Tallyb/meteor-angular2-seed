@@ -7,22 +7,22 @@ import { ROUTER_DIRECTIVES, Router  } from '@angular/router';
 import { Meteor } from 'meteor/meteor';
 
 import '../../../collections/methods.ts';
-import {UserMenu} from '../auth/user.menu';
-
+import {PartiesList} from '../parties-list/parties-list';
+import {Navbar} from '../navbar/navbar';
 
 const template =  `
-<router-outlet flex-gt-sm layout-gt-sm="row"></router-outlet>
+<navbar></navbar>
+<router-outlet></router-outlet>
 `;
 
 
 @Component({
   selector: 'app',
   template,
-  directives: [ROUTER_DIRECTIVES, MD_TOOLBAR_DIRECTIVES, UserMenu],
+  directives: [ROUTER_DIRECTIVES, PartiesList, Navbar],
 })
 
 export class App extends MeteorComponent {
-
     constructor() {
         super();
     }

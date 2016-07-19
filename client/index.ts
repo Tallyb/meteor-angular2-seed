@@ -1,6 +1,6 @@
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import { disableDeprecatedForms, provideForms } from '@angular/forms';
-
+//import {bootstrap} from 'angular2-meteor-auto-bootstrap';
 
 import { App } from './imports/app/app';
 import { appRouterProviders } from './imports/app/routes';

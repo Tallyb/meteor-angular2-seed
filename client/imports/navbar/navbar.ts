@@ -22,7 +22,7 @@ const template = `
     directives: [ROUTER_DIRECTIVES, MD_TOOLBAR_DIRECTIVES, UserMenu],
     template
 })
-export class ComponentNameComponent implements OnInit {
+export class Navbar implements OnInit {
     constructor() { }
 
     ngOnInit() { }

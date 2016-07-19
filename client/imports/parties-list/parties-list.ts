@@ -18,7 +18,7 @@ import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
   directives: [PartiesForm, ROUTER_DIRECTIVES, MD_INPUT_DIRECTIVES],
   pipes: [PaginatePipe, RsvpPipe]
 })
-//@InjectUser()
+@InjectUser()
 export class PartiesList extends MeteorComponent{
   parties: Mongo.Cursor<Party>;
   pageSize: number = 10;
