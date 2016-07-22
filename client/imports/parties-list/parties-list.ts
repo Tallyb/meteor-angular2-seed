@@ -11,10 +11,12 @@ import { RsvpPipe } from '../parties-form/rsvp.ts';
 import { Meteor } from 'meteor/meteor';
 import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
 
+import template from './parties-list.html';
+
 @Component({
   selector: 'parties-list',
   viewProviders: [PaginationService],
-  templateUrl: '/client/imports/parties-list/parties-list.html',
+  template,
   directives: [PartiesForm, ROUTER_DIRECTIVES, MD_INPUT_DIRECTIVES],
   pipes: [PaginatePipe, RsvpPipe]
 })
