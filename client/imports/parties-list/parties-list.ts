@@ -3,10 +3,9 @@ import { Parties }     from '../../../collections/parties';
 import { PartiesForm } from '../parties-form/parties-form';
 import { Mongo }       from 'meteor/mongo';
 import { ROUTER_DIRECTIVES }  from '@angular/router';
-import { InjectUser } from 'angular2-meteor-accounts-ui';
+import { InjectUser } from 'meteor-angular2-accounts-material-ui';
 import { MeteorComponent } from 'angular2-meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { PaginationService, PaginatePipe, PaginationControlsCmp } from 'angular2-pagination';
 import { RsvpPipe } from '../parties-form/rsvp.ts';
 import { Meteor } from 'meteor/meteor';
 import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
@@ -15,10 +14,8 @@ import template from './parties-list.html';
 
 @Component({
   selector: 'parties-list',
-  viewProviders: [PaginationService],
   template,
   directives: [PartiesForm, ROUTER_DIRECTIVES, MD_INPUT_DIRECTIVES],
-  pipes: [PaginatePipe, RsvpPipe]
 })
 @InjectUser()
 export class PartiesList extends MeteorComponent{

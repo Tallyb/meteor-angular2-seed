@@ -1,13 +1,11 @@
 import 'reflect-metadata';
-import {MD_TOOLBAR_DIRECTIVES} from '@angular2-material/toolbar';
 import {MeteorComponent} from 'angular2-meteor';
 import { Component, provide } from '@angular/core';
 import { ROUTER_DIRECTIVES, Router  } from '@angular/router';
-
+import {MdIconRegistry } from '@angular2-material/icon';
 import { Meteor } from 'meteor/meteor';
 
 import '../../../collections/methods.ts';
-import {PartiesList} from '../parties-list/parties-list';
 import {Navbar} from '../navbar/navbar';
 
 const template =  `
@@ -19,11 +17,14 @@ const template =  `
 @Component({
   selector: 'app',
   template,
-  directives: [ROUTER_DIRECTIVES, PartiesList, Navbar],
+  directives: [ROUTER_DIRECTIVES, Navbar],
+  providers: [MdIconRegistry]
 })
 
 export class App extends MeteorComponent {
-    constructor() {
+    constructor(mdIconRegistry: MdIconRegistry) {
         super();
+
+        mdIconRegistry. addSvgIconSetInNamespace('mdi', '/mdi.svg');
     }
 }

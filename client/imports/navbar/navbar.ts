@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {MD_TOOLBAR_DIRECTIVES} from '@angular2-material/toolbar';
+import {MD_TOOLBAR_DIRECTIVES, } from '@angular2-material/toolbar';
 import { ROUTER_DIRECTIVES, Router  } from '@angular/router';
 import { Meteor } from 'meteor/meteor';
 
-import {UserMenu} from '../auth/user.menu';
+import {UserMenu} from 'meteor-angular2-accounts-material-ui';
 
 const template = `
 <md-toolbar>
@@ -13,8 +13,6 @@ const template = `
   <span flex></span>
     <user-menu></user-menu>
 </md-toolbar>
-
-
 `;
 
 @Component({

@@ -1,10 +1,10 @@
 import { provideRouter, RouterConfig } from '@angular/router';
-import {routes as AUTH_ROUTES} from '../auth/routes';
-import {PartiesList} from '../parties-list/parties-list';
+import {Main} from '../main/main';
+import {AUTH_ROUTES} from 'meteor-angular2-accounts-material-ui';
 
 const routes: RouterConfig = [
     ...AUTH_ROUTES,
-    { path: '', component: PartiesList }
+    { path: '', component: Main }
 ];
 
 export const appRouterProviders = [
