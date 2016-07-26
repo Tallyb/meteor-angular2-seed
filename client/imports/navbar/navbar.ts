@@ -6,7 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import {UserMenu} from 'meteor-angular2-accounts-material-ui';
 
 const template = `
-<md-toolbar>
+<md-toolbar class="primary">
   <h2>
     <a href="/"><span class="md-title">App</span></a>
   </h2>

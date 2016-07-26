@@ -24,7 +24,6 @@ const template =  `
 export class App extends MeteorComponent {
     constructor(mdIconRegistry: MdIconRegistry) {
         super();
-
         mdIconRegistry. addSvgIconSetInNamespace('mdi', '/mdi.svg');
     }
 }
